@@ -1,0 +1,17 @@
+[project]
+name = "traderepublicapi"
+version = "0.1.0"
+description = "Pytrolio – a modern desktop app for your Trade Republic portfolio, built with PySide6 and pytr."
+readme = "README.md"
+authors = [
+    { name = "Jovan", email = "jovanzaric98@hotmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "pyside6-essentials>=6.12.0",
+    "pytr>=0.4.10",
+]
+
+# A plain application (started with `uv run app.py`), not an installable package.
+[tool.uv]
+package = false

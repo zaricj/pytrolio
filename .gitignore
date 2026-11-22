@@ -1,0 +1,74 @@
+# ==========================================================================
+# Trade Republic Helper – .gitignore
+# ==========================================================================
+
+# --------------------------------------------------------------------------
+# Credentials & sessions – never commit these
+# --------------------------------------------------------------------------
+# pytr normally keeps them in ~/.pytr (outside this repo); these rules catch
+# copies that end up in the project folder by accident.
+.pytr/
+credentials
+credentials.*
+cookies.txt
+cookies.*.txt
+*.cookies
+
+# Environment files / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets.*
+
+# --------------------------------------------------------------------------
+# Personal financial data written by pytr / the app
+# --------------------------------------------------------------------------
+# Exports (portfolio, prices, alarms, savings plans, transactions)
+*.csv
+account_transactions.*
+all_events.json
+events_with_documents.json
+other_events.json
+# Downloaded Trade Republic documents (dl_docs)
+documents/
+*.pdf
+# Logs saved from the app ("Export…" on the Log view)
+*.log
+
+# --------------------------------------------------------------------------
+# Python
+# --------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.python-eggs/
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Build output (PyInstaller, uv build, …)
+build/
+dist/
+*.spec
+
+# --------------------------------------------------------------------------
+# Editors & OS
+# --------------------------------------------------------------------------
+.idea/
+.vscode/*
+!.vscode/settings.json
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini

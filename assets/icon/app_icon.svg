@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <!--
+    Trade Republic Helper app icon.
+    The two folded bars are traced from trade_republic_logo.jpg; the Python twist:
+    the bars take the Python logo's blue and yellow, and each gets a "snake eye"
+    at opposite ends, like the two interlocking snakes of the Python logo.
+  -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c2230"/>
+      <stop offset="1" stop-color="#0d1016"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5a9fd4"/>
+      <stop offset="1" stop-color="#306998"/>
+    </linearGradient>
+    <linearGradient id="yellow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe873"/>
+      <stop offset="1" stop-color="#ffc331"/>
+    </linearGradient>
+  </defs>
+
+  <!-- tile -->
+  <rect x="8" y="8" width="240" height="240" rx="56" fill="url(#bg)"/>
+  <rect x="8.5" y="8.5" width="239" height="239" rx="55.5" fill="none" stroke="#ffffff" stroke-opacity="0.08"/>
+
+  <!-- logo, in the source image's coordinates (bars span x 59–139, y 66–138) -->
+  <g transform="translate(128 128) scale(1.9) translate(-99 -102)" stroke-linejoin="round" stroke-width="1.5">
+    <!-- top bar: Python blue -->
+    <path d="M59 79 L92 69 L107 73.5 L139 66 L139 91 L107 98.5 L92 94 L59 104 Z"
+          fill="url(#blue)" stroke="url(#blue)"/>
+    <!-- bottom bar: Python yellow -->
+    <path d="M59 113 L92 103 L107 107.5 L139 100 L139 125 L107 132.5 L92 128 L59 138 Z"
+          fill="url(#yellow)" stroke="url(#yellow)"/>
+    <!-- snake eyes at opposite ends -->
+    <circle cx="68" cy="88" r="3.6" fill="#ffffff"/>
+    <circle cx="130" cy="115" r="3.6" fill="#1f3550"/>
+  </g>
+</svg>

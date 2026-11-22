@@ -1,0 +1,88 @@
+<style>
+    .divTable {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    margin: 1em 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.row {
+    display: table-row;
+    background-color: #ffffff;
+}
+
+.row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.row.header {
+    background-color: #007acc;
+    color: white;
+    font-weight: bold;
+}
+
+.cell {
+    display: table-cell;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: top;
+}
+</style>
+
+<p>usage: pytr [-h] [-v {warning,info,debug}] [-V]</p>
+<p>{help,login,dl_docs,portfolio,details,get_price_alarms,set_price_alarms,export_transactions,completion}</p>
+
+<p>Use "pytr command_name --help" to get detailed help to a specific command</p>
+
+<div class="divTable">
+    <div class="row">
+        <div class="cell"><b>Command</b></div>
+        <div class="cell"><b>Description</b></div>
+    </div>
+    <div class="row">
+        <div class="cell">help</div>
+        <div class="cell">Print this help message</div>
+    </div>
+    <div class="row">
+        <div class="cell">login</div>
+        <div class="cell">Check if credentials file exists. If not create it and ask for input. Try to login. Ask for device reset if needed</div>
+    </div>
+    <div class="row">
+        <div class="cell">dl_docs</div>
+        <div class="cell">Download all pdf documents from the timeline and sort them into folders. Also export account transactions (account_transactions.csv) and JSON files with all events (events_with_documents.json and other_events.json</div>
+    </div>
+    <div class="row">
+        <div class="cell">portfolio</div>
+        <div class="cell">Show current portfolio</div>
+    </div>
+    <div class="row">
+        <div class="cell">details</div>
+        <div class="cell">Get details for an ISIN</div>
+    </div>
+    <div class="row">
+        <div class="cell">get_price_alarms</div>
+        <div class="cell">Get overview of current price alarms</div>
+    </div>
+    <div class="row">
+        <div class="cell">set_price_alarms</div>
+        <div class="cell">Set price alarms based on diff from current price</div>
+    </div>
+    <div class="row">
+        <div class="cell">export_transactions</div>
+        <div class="cell">Create a CSV with the deposits and removals ready for importing into Portfolio Performance</div>
+    </div>
+    <div class="row">
+        <div class="cell">completion</div>
+        <div class="cell">Print shell tab completion</div>
+    </div>
+</div>
+
+<p>Options:</p>
+<p>-h, --help ------- show this help message and exit</p>
+<p>-v {warning,info,debug}, --verbosity {warning,info,debug} ------- Set verbosity level (default: info)</p>
+<p>-V, --version ------- Print version information and quit</p>

@@ -1,0 +1,1370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Pytrolio – main window layout (Qt Designer file).
+
+  Loaded at runtime by app.py. Widgets are found by their objectName, so keep
+  the names when editing. Styling lives in assets/theme/theme.qss and targets
+  the dynamic properties set here (role, card, variant, nav, pill, …).
+
+  Filled in by code (because it depends on the installed pytr version):
+    * navTasks   – one sidebar button per pytr task
+    * formStack  – the settings form of each task
+-->
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>1400</width><height>880</height></rect>
+  </property>
+  <property name="minimumSize">
+   <size><width>1100</width><height>700</height></size>
+  </property>
+  <property name="windowTitle">
+   <string>Pytrolio</string>
+  </property>
+  <widget class="QWidget" name="Root">
+   <layout class="QHBoxLayout" name="rootLayout">
+    <property name="spacing"><number>0</number></property>
+    <property name="leftMargin"><number>0</number></property>
+    <property name="topMargin"><number>0</number></property>
+    <property name="rightMargin"><number>0</number></property>
+    <property name="bottomMargin"><number>0</number></property>
+
+    <!-- ================================================================ -->
+    <!-- Sidebar                                                          -->
+    <!-- ================================================================ -->
+    <item>
+     <widget class="QFrame" name="Sidebar">
+      <property name="minimumSize"><size><width>230</width><height>0</height></size></property>
+      <property name="maximumSize"><size><width>230</width><height>16777215</height></size></property>
+      <layout class="QVBoxLayout" name="sidebarLayout">
+       <property name="spacing"><number>2</number></property>
+       <property name="leftMargin"><number>12</number></property>
+       <property name="topMargin"><number>18</number></property>
+       <property name="rightMargin"><number>12</number></property>
+       <property name="bottomMargin"><number>14</number></property>
+       <item>
+        <layout class="QHBoxLayout" name="brandLayout">
+         <property name="spacing"><number>10</number></property>
+         <property name="leftMargin"><number>4</number></property>
+         <item>
+          <widget class="QLabel" name="brandIcon">
+           <property name="minimumSize"><size><width>30</width><height>30</height></size></property>
+           <property name="maximumSize"><size><width>30</width><height>30</height></size></property>
+           <property name="scaledContents"><bool>true</bool></property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="brandTextLayout">
+           <property name="spacing"><number>0</number></property>
+           <item>
+            <widget class="QLabel" name="appTitle">
+             <property name="text"><string>Pytrolio</string></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="appVersion">
+             <property name="text"><string>Version</string></property>
+             <property name="role" stdset="0"><string>small</string></property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="brandSpacer">
+         <property name="orientation"><enum>Qt::Vertical</enum></property>
+         <property name="sizeType"><enum>QSizePolicy::Fixed</enum></property>
+         <property name="sizeHint" stdset="0"><size><width>0</width><height>18</height></size></property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="navAccount">
+         <property name="toolTip"><string>Sign in / sign out</string></property>
+         <property name="text"><string>Account</string></property>
+         <property name="checkable"><bool>true</bool></property>
+         <property name="nav" stdset="0"><bool>true</bool></property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="navSpacer1">
+         <property name="orientation"><enum>Qt::Vertical</enum></property>
+         <property name="sizeType"><enum>QSizePolicy::Fixed</enum></property>
+         <property name="sizeHint" stdset="0"><size><width>0</width><height>14</height></size></property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="navTasksLabel">
+         <property name="text"><string>TASKS</string></property>
+         <property name="role" stdset="0"><string>nav-section</string></property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="navSpacer2">
+         <property name="orientation"><enum>Qt::Vertical</enum></property>
+         <property name="sizeType"><enum>QSizePolicy::Fixed</enum></property>
+         <property name="sizeHint" stdset="0"><size><width>0</width><height>4</height></size></property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QWidget" name="navTasks">
+         <property name="transparent" stdset="0"><bool>true</bool></property>
+         <layout class="QVBoxLayout" name="navTasksLayout">
+          <property name="spacing"><number>2</number></property>
+          <property name="leftMargin"><number>0</number></property>
+          <property name="topMargin"><number>0</number></property>
+          <property name="rightMargin"><number>0</number></property>
+          <property name="bottomMargin"><number>0</number></property>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="sidebarStretch">
+         <property name="orientation"><enum>Qt::Vertical</enum></property>
+         <property name="sizeHint" stdset="0"><size><width>0</width><height>40</height></size></property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="navSettings">
+         <property name="text"><string>Settings</string></property>
+         <property name="checkable"><bool>true</bool></property>
+         <property name="nav" stdset="0"><bool>true</bool></property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="navSpacer3">
+         <property name="orientation"><enum>Qt::Vertical</enum></property>
+         <property name="sizeType"><enum>QSizePolicy::Fixed</enum></property>
+         <property name="sizeHint" stdset="0"><size><width>0</width><height>12</height></size></property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QFrame" name="sidebarDivider">
+         <property name="divider" stdset="0"><bool>true</bool></property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="navSpacer4">
+         <property name="orientation"><enum>Qt::Vertical</enum></property>
+         <property name="sizeType"><enum>QSizePolicy::Fixed</enum></property>
+         <property name="sizeHint" stdset="0"><size><width>0</width><height>10</height></size></property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="sessionLayout">
+         <property name="leftMargin"><number>4</number></property>
+         <property name="rightMargin"><number>4</number></property>
+         <item>
+          <widget class="QLabel" name="sessionLabel">
+           <property name="text"><string>Session</string></property>
+           <property name="role" stdset="0"><string>small</string></property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="sessionSpacer">
+           <property name="orientation"><enum>Qt::Horizontal</enum></property>
+           <property name="sizeHint" stdset="0"><size><width>0</width><height>0</height></size></property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="sessionPill">
+           <property name="text"><string>● Signed out</string></property>
+           <property name="pill" stdset="0"><bool>true</bool></property>
+           <property name="state" stdset="0"><string>idle</string></property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <!-- ================================================================ -->
+    <!-- Pages                                                            -->
+    <!-- ================================================================ -->
+    <item>
+     <widget class="QStackedWidget" name="pages">
+      <property name="currentIndex"><number>0</number></property>
+
+      <!-- ============================ Account ============================ -->
+      <widget class="QWidget" name="accountPage">
+       <layout class="QVBoxLayout" name="accountPageLayout">
+        <property name="spacing"><number>18</number></property>
+        <property name="leftMargin"><number>28</number></property>
+        <property name="topMargin"><number>24</number></property>
+        <property name="rightMargin"><number>28</number></property>
+        <property name="bottomMargin"><number>20</number></property>
+        <item>
+         <layout class="QVBoxLayout" name="accountHeader">
+          <property name="spacing"><number>2</number></property>
+          <item>
+           <widget class="QLabel" name="accountTitle">
+            <property name="text"><string>Account</string></property>
+            <property name="role" stdset="0"><string>title</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="accountSubtitle">
+            <property name="text"><string>Sign in to Trade Republic and manage your saved session.</string></property>
+            <property name="wordWrap"><bool>true</bool></property>
+            <property name="role" stdset="0"><string>muted</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QScrollArea" name="accountScroll">
+          <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+          <property name="horizontalScrollBarPolicy"><enum>Qt::ScrollBarAlwaysOff</enum></property>
+          <property name="widgetResizable"><bool>true</bool></property>
+          <widget class="QWidget" name="accountContent">
+           <property name="maximumSize"><size><width>1100</width><height>16777215</height></size></property>
+           <property name="transparent" stdset="0"><bool>true</bool></property>
+           <layout class="QVBoxLayout" name="accountContentLayout">
+            <property name="spacing"><number>16</number></property>
+            <property name="leftMargin"><number>0</number></property>
+            <property name="topMargin"><number>0</number></property>
+            <property name="rightMargin"><number>4</number></property>
+            <property name="bottomMargin"><number>0</number></property>
+            <item>
+             <widget class="QFrame" name="accountPytrBanner">
+              <property name="banner" stdset="0"><bool>true</bool></property>
+              <layout class="QHBoxLayout" name="accountPytrBannerLayout">
+               <property name="leftMargin"><number>14</number></property>
+               <property name="topMargin"><number>10</number></property>
+               <property name="rightMargin"><number>10</number></property>
+               <property name="bottomMargin"><number>10</number></property>
+               <item>
+                <widget class="QLabel" name="accountPytrBannerText">
+                 <property name="text"><string>pytr could not be loaded. Install it with:  pip install pytr</string></property>
+                 <property name="wordWrap"><bool>true</bool></property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="accountColumns" stretch="3,2">
+              <property name="spacing"><number>16</number></property>
+              <item>
+               <layout class="QVBoxLayout" name="accountLeftColumn">
+                <property name="spacing"><number>16</number></property>
+
+                <!-- Sign-in card -->
+                <item>
+                 <widget class="QFrame" name="signInCard">
+                  <property name="card" stdset="0"><bool>true</bool></property>
+                  <layout class="QVBoxLayout" name="signInCardLayout">
+                   <property name="spacing"><number>14</number></property>
+                   <property name="leftMargin"><number>22</number></property>
+                   <property name="topMargin"><number>20</number></property>
+                   <property name="rightMargin"><number>22</number></property>
+                   <property name="bottomMargin"><number>20</number></property>
+                   <item>
+                    <layout class="QHBoxLayout" name="signInHeader">
+                     <item>
+                      <widget class="QLabel" name="signInTitle">
+                       <property name="text"><string>Sign in</string></property>
+                       <property name="role" stdset="0"><string>section</string></property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="signInHeaderSpacer">
+                       <property name="orientation"><enum>Qt::Horizontal</enum></property>
+                       <property name="sizeHint" stdset="0"><size><width>0</width><height>0</height></size></property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="accountPill">
+                       <property name="text"><string>● Signed out</string></property>
+                       <property name="pill" stdset="0"><bool>true</bool></property>
+                       <property name="state" stdset="0"><string>idle</string></property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QFormLayout" name="signInForm">
+                     <property name="fieldGrowthPolicy"><enum>QFormLayout::AllNonFixedFieldsGrow</enum></property>
+                     <property name="labelAlignment"><set>Qt::AlignLeft|Qt::AlignVCenter</set></property>
+                     <property name="horizontalSpacing"><number>18</number></property>
+                     <property name="verticalSpacing"><number>12</number></property>
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="phoneLabel">
+                       <property name="text"><string>Phone number</string></property>
+                       <property name="role" stdset="0"><string>field</string></property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QLineEdit" name="phoneEdit">
+                       <property name="placeholderText"><string>+491701234567</string></property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="pinLabel">
+                       <property name="text"><string>PIN</string></property>
+                       <property name="role" stdset="0"><string>field</string></property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <layout class="QHBoxLayout" name="pinRow">
+                       <item>
+                        <widget class="QLineEdit" name="pinEdit">
+                         <property name="maxLength"><number>6</number></property>
+                         <property name="echoMode"><enum>QLineEdit::Password</enum></property>
+                         <property name="placeholderText"><string>4-digit PIN</string></property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="showPinCheck">
+                         <property name="text"><string>Show</string></property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="methodLabel">
+                       <property name="text"><string>Confirmation</string></property>
+                       <property name="role" stdset="0"><string>field</string></property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QComboBox" name="methodCombo">
+                       <item><property name="text"><string>Confirm in the Trade Republic app (recommended)</string></property></item>
+                       <item><property name="text"><string>Enter a code from push notification / SMS (legacy)</string></property></item>
+                      </widget>
+                     </item>
+                     <item row="3" column="0">
+                      <widget class="QLabel" name="wafLabel">
+                       <property name="text"><string>WAF token</string></property>
+                       <property name="role" stdset="0"><string>field</string></property>
+                      </widget>
+                     </item>
+                     <item row="3" column="1">
+                      <widget class="QComboBox" name="wafCombo">
+                       <property name="toolTip"><string>How pytr obtains the AWS WAF token required for the legacy login.
+'Playwright' needs: pip install "pytr[playwright]" &amp;&amp; playwright install chromium</string></property>
+                       <item><property name="text"><string>Automatic (pytr default)</string></property></item>
+                       <item><property name="text"><string>Pure Python solver (awswaf)</string></property></item>
+                       <item><property name="text"><string>Playwright browser</string></property></item>
+                       <item><property name="text"><string>Skip WAF token</string></property></item>
+                      </widget>
+                     </item>
+                     <item row="4" column="1">
+                      <widget class="QCheckBox" name="rememberCheck">
+                       <property name="text"><string>Stay signed in (store phone number, PIN and session locally)</string></property>
+                       <property name="checked"><bool>true</bool></property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="accountMessage">
+                     <property name="wordWrap"><bool>true</bool></property>
+                     <property name="role" stdset="0"><string>muted</string></property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="signInButtons">
+                     <item>
+                      <spacer name="signInButtonsSpacer">
+                       <property name="orientation"><enum>Qt::Horizontal</enum></property>
+                       <property name="sizeHint" stdset="0"><size><width>0</width><height>0</height></size></property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="signOutButton">
+                       <property name="text"><string>Sign out</string></property>
+                       <property name="variant" stdset="0"><string>danger</string></property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="signInButton">
+                       <property name="minimumSize"><size><width>120</width><height>0</height></size></property>
+                       <property name="text"><string>Sign in</string></property>
+                       <property name="variant" stdset="0"><string>primary</string></property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+
+                <!-- Verification card (shown during the 2FA step) -->
+                <item>
+                 <widget class="QFrame" name="verifyCard">
+                  <property name="card" stdset="0"><bool>true</bool></property>
+                  <layout class="QVBoxLayout" name="verifyCardLayout">
+                   <property name="spacing"><number>12</number></property>
+                   <property name="leftMargin"><number>22</number></property>
+                   <property name="topMargin"><number>20</number></property>
+                   <property name="rightMargin"><number>22</number></property>
+                   <property name="bottomMargin"><number>20</number></property>
+                   <item>
+                    <widget class="QLabel" name="verifyTitle">
+                     <property name="text"><string>Confirm your login</string></property>
+                     <property name="role" stdset="0"><string>section</string></property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="verifyText">
+                     <property name="wordWrap"><bool>true</bool></property>
+                     <property name="role" stdset="0"><string>muted</string></property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QProgressBar" name="verifyProgress">
+                     <property name="maximum"><number>0</number></property>
+                     <property name="textVisible"><bool>false</bool></property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="codeRow">
+                     <item>
+                      <widget class="QLineEdit" name="codeEdit">
+                       <property name="minimumSize"><size><width>150</width><height>0</height></size></property>
+                       <property name="maximumSize"><size><width>150</width><height>16777215</height></size></property>
+                       <property name="maxLength"><number>8</number></property>
+                       <property name="alignment"><set>Qt::AlignCenter</set></property>
+                       <property name="placeholderText"><string>Code</string></property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="verifyButton">
+                       <property name="text"><string>Verify</string></property>
+                       <property name="variant" stdset="0"><string>primary</string></property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="resendButton">
+                       <property name="text"><string>Send code via SMS</string></property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="countdownLabel">
+                       <property name="role" stdset="0"><string>small</string></property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="codeRowSpacer">
+                       <property name="orientation"><enum>Qt::Horizontal</enum></property>
+                       <property name="sizeHint" stdset="0"><size><width>0</width><height>0</height></size></property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="cancelButton">
+                       <property name="text"><string>Cancel</string></property>
+                       <property name="variant" stdset="0"><string>ghost</string></property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="accountLeftStretch">
+                  <property name="orientation"><enum>Qt::Vertical</enum></property>
+                  <property name="sizeHint" stdset="0"><size><width>0</width><height>0</height></size></property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+
+              <!-- How it works -->
+              <item alignment="Qt::AlignTop">
+               <widget class="QFrame" name="infoCard">
+                <property name="card" stdset="0"><bool>true</bool></property>
+                <layout class="QVBoxLayout" name="infoCardLayout">
+                 <property name="spacing"><number>10</number></property>
+                 <property name="leftMargin"><number>22</number></property>
+                 <property name="topMargin"><number>20</number></property>
+                 <property name="rightMargin"><number>22</number></property>
+                 <property name="bottomMargin"><number>20</number></property>
+                 <item>
+                  <widget class="QLabel" name="infoTitle">
+                   <property name="text"><string>How it works</string></property>
+                   <property name="role" stdset="0"><string>section</string></property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="step1Row">
+                   <property name="spacing"><number>12</number></property>
+                   <item alignment="Qt::AlignTop">
+                    <widget class="QLabel" name="step1Number">
+                     <property name="minimumSize"><size><width>24</width><height>24</height></size></property>
+                     <property name="maximumSize"><size><width>24</width><height>24</height></size></property>
+                     <property name="text"><string>1</string></property>
+                     <property name="alignment"><set>Qt::AlignCenter</set></property>
+                     <property name="role" stdset="0"><string>step</string></property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="step1Text">
+                     <property name="text"><string>Enter your phone number and PIN, then press Sign in.</string></property>
+                     <property name="wordWrap"><bool>true</bool></property>
+                     <property name="role" stdset="0"><string>muted</string></property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="step2Row">
+                   <property name="spacing"><number>12</number></property>
+                   <item alignment="Qt::AlignTop">
+                    <widget class="QLabel" name="step2Number">
+                     <property name="minimumSize"><size><width>24</width><height>24</height></size></property>
+                     <property name="maximumSize"><size><width>24</width><height>24</height></size></property>
+                     <property name="text"><string>2</string></property>
+                     <property name="alignment"><set>Qt::AlignCenter</set></property>
+                     <property name="role" stdset="0"><string>step</string></property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="step2Text">
+                     <property name="text"><string>Confirm the login in the Trade Republic app on your phone (or enter the code, if you chose the legacy method).</string></property>
+                     <property name="wordWrap"><bool>true</bool></property>
+                     <property name="role" stdset="0"><string>muted</string></property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="step3Row">
+                   <property name="spacing"><number>12</number></property>
+                   <item alignment="Qt::AlignTop">
+                    <widget class="QLabel" name="step3Number">
+                     <property name="minimumSize"><size><width>24</width><height>24</height></size></property>
+                     <property name="maximumSize"><size><width>24</width><height>24</height></size></property>
+                     <property name="text"><string>3</string></property>
+                     <property name="alignment"><set>Qt::AlignCenter</set></property>
+                     <property name="role" stdset="0"><string>step</string></property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="step3Text">
+                     <property name="text"><string>Pick a task in the sidebar — e.g. Portfolio — and press Run. Results appear as a table.</string></property>
+                     <property name="wordWrap"><bool>true</bool></property>
+                     <property name="role" stdset="0"><string>muted</string></property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="infoDivider">
+                   <property name="divider" stdset="0"><bool>true</bool></property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="infoStorageText">
+                   <property name="text"><string>With “Stay signed in”, pytr keeps your credentials and session in:</string></property>
+                   <property name="wordWrap"><bool>true</bool></property>
+                   <property name="role" stdset="0"><string>small</string></property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="infoStoragePath">
+                   <property name="textInteractionFlags"><set>Qt::TextSelectableByMouse</set></property>
+                   <property name="role" stdset="0"><string>small</string></property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="infoNoStorageText">
+                   <property name="text"><string>Without it, every task signs in again and asks you to confirm.</string></property>
+                   <property name="wordWrap"><bool>true</bool></property>
+                   <property name="role" stdset="0"><string>small</string></property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer name="accountContentStretch">
+              <property name="orientation"><enum>Qt::Vertical</enum></property>
+              <property name="sizeHint" stdset="0"><size><width>0</width><height>0</height></size></property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+      <!-- ============================== Task ============================== -->
+      <widget class="QWidget" name="taskPage">
+       <layout class="QVBoxLayout" name="taskPageLayout">
+        <property name="spacing"><number>14</number></property>
+        <property name="leftMargin"><number>28</number></property>
+        <property name="topMargin"><number>24</number></property>
+        <property name="rightMargin"><number>28</number></property>
+        <property name="bottomMargin"><number>20</number></property>
+        <item>
+         <layout class="QHBoxLayout" name="taskHeader" stretch="1,0,0">
+          <property name="spacing"><number>10</number></property>
+          <item>
+           <layout class="QVBoxLayout" name="taskTitleColumn">
+            <property name="spacing"><number>2</number></property>
+            <item>
+             <widget class="QLabel" name="taskTitle">
+              <property name="text"><string>Task</string></property>
+              <property name="role" stdset="0"><string>title</string></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="taskDescription">
+              <property name="wordWrap"><bool>true</bool></property>
+              <property name="role" stdset="0"><string>muted</string></property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item alignment="Qt::AlignBottom">
+           <widget class="QPushButton" name="stopButton">
+            <property name="toolTip"><string>Cancel the running task (Esc)</string></property>
+            <property name="text"><string>Stop</string></property>
+            <property name="variant" stdset="0"><string>danger</string></property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignBottom">
+           <widget class="QPushButton" name="runButton">
+            <property name="minimumSize"><size><width>110</width><height>0</height></size></property>
+            <property name="toolTip"><string>Run this task (Ctrl+Enter)</string></property>
+            <property name="text"><string>Run</string></property>
+            <property name="variant" stdset="0"><string>primary</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QFrame" name="sessionBanner">
+          <property name="banner" stdset="0"><bool>true</bool></property>
+          <layout class="QHBoxLayout" name="sessionBannerLayout">
+           <property name="leftMargin"><number>14</number></property>
+           <property name="topMargin"><number>10</number></property>
+           <property name="rightMargin"><number>10</number></property>
+           <property name="bottomMargin"><number>10</number></property>
+           <item>
+            <widget class="QLabel" name="sessionBannerText">
+             <property name="text"><string>You are not signed in. Sign in once on the Account page so tasks can run without asking.</string></property>
+             <property name="wordWrap"><bool>true</bool></property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="sessionBannerButton">
+             <property name="text"><string>Go to Account</string></property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="taskPytrBanner">
+          <property name="banner" stdset="0"><bool>true</bool></property>
+          <layout class="QHBoxLayout" name="taskPytrBannerLayout">
+           <property name="leftMargin"><number>14</number></property>
+           <property name="topMargin"><number>10</number></property>
+           <property name="rightMargin"><number>10</number></property>
+           <property name="bottomMargin"><number>10</number></property>
+           <item>
+            <widget class="QLabel" name="taskPytrBannerText">
+             <property name="text"><string>pytr could not be loaded. Install it with:  pip install pytr</string></property>
+             <property name="wordWrap"><bool>true</bool></property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSplitter" name="taskSplitter">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding"><horstretch>0</horstretch><verstretch>1</verstretch></sizepolicy>
+          </property>
+          <property name="orientation"><enum>Qt::Horizontal</enum></property>
+          <property name="handleWidth"><number>14</number></property>
+          <property name="childrenCollapsible"><bool>false</bool></property>
+
+          <!-- Settings (left) -->
+          <widget class="QFrame" name="settingsCard">
+           <property name="minimumSize"><size><width>300</width><height>0</height></size></property>
+           <property name="card" stdset="0"><bool>true</bool></property>
+           <layout class="QVBoxLayout" name="settingsCardLayout">
+            <property name="spacing"><number>12</number></property>
+            <property name="leftMargin"><number>18</number></property>
+            <property name="topMargin"><number>16</number></property>
+            <property name="rightMargin"><number>10</number></property>
+            <property name="bottomMargin"><number>16</number></property>
+            <item>
+             <widget class="QLabel" name="settingsCardTitle">
+              <property name="text"><string>Settings</string></property>
+              <property name="role" stdset="0"><string>section</string></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QStackedWidget" name="formStack">
+              <property name="transparent" stdset="0"><bool>true</bool></property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+
+          <!-- Results (right) -->
+          <widget class="QFrame" name="resultsCard">
+           <property name="card" stdset="0"><bool>true</bool></property>
+           <layout class="QVBoxLayout" name="resultsCardLayout">
+            <property name="spacing"><number>12</number></property>
+            <property name="leftMargin"><number>18</number></property>
+            <property name="topMargin"><number>16</number></property>
+            <property name="rightMargin"><number>18</number></property>
+            <property name="bottomMargin"><number>16</number></property>
+            <item>
+             <layout class="QHBoxLayout" name="resultsHeader">
+              <property name="spacing"><number>8</number></property>
+              <item>
+               <widget class="QLabel" name="resultsTitle">
+                <property name="text"><string>Results</string></property>
+                <property name="role" stdset="0"><string>section</string></property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="runPill">
+                <property name="text"><string>● Ready</string></property>
+                <property name="pill" stdset="0"><bool>true</bool></property>
+                <property name="state" stdset="0"><string>idle</string></property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="resultsHeaderSpacer">
+                <property name="orientation"><enum>Qt::Horizontal</enum></property>
+                <property name="sizeHint" stdset="0"><size><width>0</width><height>0</height></size></property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QFrame" name="viewSwitch">
+                <property name="segmented" stdset="0"><bool>true</bool></property>
+                <layout class="QHBoxLayout" name="viewSwitchLayout">
+                 <property name="spacing"><number>2</number></property>
+                 <property name="leftMargin"><number>3</number></property>
+                 <property name="topMargin"><number>3</number></property>
+                 <property name="rightMargin"><number>3</number></property>
+                 <property name="bottomMargin"><number>3</number></property>
+                 <item>
+                  <widget class="QPushButton" name="tableViewButton">
+                   <property name="text"><string>Table</string></property>
+                   <property name="checkable"><bool>true</bool></property>
+                   <property name="checked"><bool>true</bool></property>
+                   <property name="segment" stdset="0"><bool>true</bool></property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="logViewButton">
+                   <property name="text"><string>Log</string></property>
+                   <property name="checkable"><bool>true</bool></property>
+                   <property name="segment" stdset="0"><bool>true</bool></property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="openFolderButton">
+                <property name="toolTip"><string>Open the working folder</string></property>
+                <property name="text"><string>Open folder</string></property>
+                <property name="variant" stdset="0"><string>ghost</string></property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="exportButton">
+                <property name="toolTip"><string>Save the table as CSV / the log as text</string></property>
+                <property name="text"><string>Export…</string></property>
+                <property name="variant" stdset="0"><string>ghost</string></property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="clearButton">
+                <property name="toolTip"><string>Clear (Ctrl+L)</string></property>
+                <property name="text"><string>Clear</string></property>
+                <property name="variant" stdset="0"><string>ghost</string></property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QProgressBar" name="runProgress">
+              <property name="maximum"><number>0</number></property>
+              <property name="textVisible"><bool>false</bool></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QStackedWidget" name="resultStack">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding"><horstretch>0</horstretch><verstretch>1</verstretch></sizepolicy>
+              </property>
+              <property name="currentIndex"><number>0</number></property>
+
+              <!-- Table view -->
+              <widget class="QWidget" name="tablePage">
+               <layout class="QVBoxLayout" name="tablePageLayout">
+                <property name="spacing"><number>10</number></property>
+                <property name="leftMargin"><number>0</number></property>
+                <property name="topMargin"><number>0</number></property>
+                <property name="rightMargin"><number>0</number></property>
+                <property name="bottomMargin"><number>0</number></property>
+
+                <!-- Portfolio overview: shown only for the Portfolio task -->
+                <item>
+                 <widget class="QWidget" name="portfolioSummary">
+                  <property name="transparent" stdset="0"><bool>true</bool></property>
+                  <layout class="QVBoxLayout" name="portfolioSummaryLayout">
+                   <property name="spacing"><number>8</number></property>
+                   <property name="leftMargin"><number>0</number></property>
+                   <property name="topMargin"><number>0</number></property>
+                   <property name="rightMargin"><number>0</number></property>
+                   <property name="bottomMargin"><number>4</number></property>
+                   <item>
+                    <layout class="QHBoxLayout" name="portfolioSummaryHeader">
+                     <item>
+                      <widget class="QLabel" name="portfolioCaption">
+                       <property name="text"><string>OVERVIEW</string></property>
+                       <property name="role" stdset="0"><string>caption</string></property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="portfolioCaptionSpacer">
+                       <property name="orientation"><enum>Qt::Horizontal</enum></property>
+                       <property name="sizeHint" stdset="0"><size><width>0</width><height>0</height></size></property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="portfolioUpdated">
+                       <property name="toolTip"><string>Time of the last successful run</string></property>
+                       <property name="text"><string>Updated —</string></property>
+                       <property name="role" stdset="0"><string>small</string></property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="portfolioTiles" stretch="1,1,1">
+                     <property name="spacing"><number>10</number></property>
+
+                     <!-- Depot -->
+                     <item>
+                      <widget class="QFrame" name="depotTile">
+                       <property name="tile" stdset="0"><bool>true</bool></property>
+                       <layout class="QVBoxLayout" name="depotTileLayout">
+                        <property name="spacing"><number>4</number></property>
+                        <property name="leftMargin"><number>16</number></property>
+                        <property name="topMargin"><number>12</number></property>
+                        <property name="rightMargin"><number>16</number></property>
+                        <property name="bottomMargin"><number>12</number></property>
+                        <item>
+                         <widget class="QLabel" name="depotLabel">
+                          <property name="text"><string>Depot value</string></property>
+                          <property name="role" stdset="0"><string>tile-label</string></property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="depotValue">
+                          <property name="text"><string>—</string></property>
+                          <property name="textInteractionFlags"><set>Qt::TextSelectableByMouse</set></property>
+                          <property name="role" stdset="0"><string>tile-value</string></property>
+                         </widget>
+                        </item>
+                        <item>
+                         <layout class="QHBoxLayout" name="depotDeltaRow">
+                          <property name="spacing"><number>8</number></property>
+                          <item>
+                           <widget class="QLabel" name="depotDelta">
+                            <property name="toolTip"><string>Gain / loss compared to what you paid (buy-in)</string></property>
+                            <property name="delta" stdset="0"><string>flat</string></property>
+                           </widget>
+                          </item>
+                          <item>
+                           <spacer name="depotDeltaSpacer">
+                            <property name="orientation"><enum>Qt::Horizontal</enum></property>
+                            <property name="sizeHint" stdset="0"><size><width>0</width><height>0</height></size></property>
+                           </spacer>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="depotInvested">
+                          <property name="role" stdset="0"><string>tile-sub</string></property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+
+                     <!-- Cash -->
+                     <item>
+                      <widget class="QFrame" name="cashTile">
+                       <property name="tile" stdset="0"><bool>true</bool></property>
+                       <layout class="QVBoxLayout" name="cashTileLayout">
+                        <property name="spacing"><number>4</number></property>
+                        <property name="leftMargin"><number>16</number></property>
+                        <property name="topMargin"><number>12</number></property>
+                        <property name="rightMargin"><number>16</number></property>
+                        <property name="bottomMargin"><number>12</number></property>
+                        <item>
+                         <widget class="QLabel" name="cashLabel">
+                          <property name="text"><string>Cash</string></property>
+                          <property name="role" stdset="0"><string>tile-label</string></property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="cashValue">
+                          <property name="text"><string>—</string></property>
+                          <property name="textInteractionFlags"><set>Qt::TextSelectableByMouse</set></property>
+                          <property name="role" stdset="0"><string>tile-value</string></property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="cashShare">
+                          <property name="role" stdset="0"><string>tile-sub</string></property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="cashTileStretch">
+                          <property name="orientation"><enum>Qt::Vertical</enum></property>
+                          <property name="sizeHint" stdset="0"><size><width>0</width><height>0</height></size></property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+
+                     <!-- Total -->
+                     <item>
+                      <widget class="QFrame" name="totalTile">
+                       <property name="tile" stdset="0"><bool>true</bool></property>
+                       <property name="emphasis" stdset="0"><bool>true</bool></property>
+                       <layout class="QVBoxLayout" name="totalTileLayout">
+                        <property name="spacing"><number>4</number></property>
+                        <property name="leftMargin"><number>16</number></property>
+                        <property name="topMargin"><number>12</number></property>
+                        <property name="rightMargin"><number>16</number></property>
+                        <property name="bottomMargin"><number>12</number></property>
+                        <item>
+                         <widget class="QLabel" name="totalLabel">
+                          <property name="text"><string>Total</string></property>
+                          <property name="role" stdset="0"><string>tile-label</string></property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="totalValue">
+                          <property name="text"><string>—</string></property>
+                          <property name="textInteractionFlags"><set>Qt::TextSelectableByMouse</set></property>
+                          <property name="role" stdset="0"><string>tile-value</string></property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="totalInvested">
+                          <property name="role" stdset="0"><string>tile-sub</string></property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="totalTileStretch">
+                          <property name="orientation"><enum>Qt::Vertical</enum></property>
+                          <property name="sizeHint" stdset="0"><size><width>0</width><height>0</height></size></property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="tableSummary">
+                  <property name="wordWrap"><bool>true</bool></property>
+                  <property name="textInteractionFlags"><set>Qt::TextSelectableByMouse</set></property>
+                  <property name="role" stdset="0"><string>muted</string></property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="tableFilterRow">
+                  <item>
+                   <widget class="QLineEdit" name="tableFilter">
+                    <property name="placeholderText"><string>Filter rows…</string></property>
+                    <property name="clearButtonEnabled"><bool>true</bool></property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="tableCount">
+                    <property name="role" stdset="0"><string>small</string></property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QStackedWidget" name="tableStack">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding"><horstretch>0</horstretch><verstretch>1</verstretch></sizepolicy>
+                  </property>
+                  <property name="currentIndex"><number>0</number></property>
+                  <widget class="QWidget" name="tableEmptyPage">
+                   <layout class="QVBoxLayout" name="tableEmptyLayout">
+                    <item>
+                     <widget class="QLabel" name="tableEmptyLabel">
+                      <property name="text"><string>No table yet.
+
+Run a task — tabular results such as your portfolio, prices, alarms or transactions appear here.</string></property>
+                      <property name="alignment"><set>Qt::AlignCenter</set></property>
+                      <property name="wordWrap"><bool>true</bool></property>
+                      <property name="role" stdset="0"><string>empty</string></property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QTableView" name="tableView">
+                   <property name="editTriggers"><set>QAbstractItemView::NoEditTriggers</set></property>
+                   <property name="alternatingRowColors"><bool>true</bool></property>
+                   <property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property>
+                   <property name="showGrid"><bool>false</bool></property>
+                   <property name="sortingEnabled"><bool>true</bool></property>
+                   <property name="wordWrap"><bool>false</bool></property>
+                   <attribute name="horizontalHeaderStretchLastSection"><bool>true</bool></attribute>
+                   <attribute name="verticalHeaderVisible"><bool>false</bool></attribute>
+                   <attribute name="verticalHeaderDefaultSectionSize"><number>30</number></attribute>
+                  </widget>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+
+              <!-- Log view -->
+              <widget class="QWidget" name="logPage">
+               <layout class="QVBoxLayout" name="logPageLayout">
+                <property name="spacing"><number>8</number></property>
+                <property name="leftMargin"><number>0</number></property>
+                <property name="topMargin"><number>0</number></property>
+                <property name="rightMargin"><number>0</number></property>
+                <property name="bottomMargin"><number>0</number></property>
+                <item>
+                 <widget class="QPlainTextEdit" name="console">
+                  <property name="undoRedoEnabled"><bool>false</bool></property>
+                  <property name="lineWrapMode"><enum>QPlainTextEdit::NoWrap</enum></property>
+                  <property name="readOnly"><bool>true</bool></property>
+                  <property name="maximumBlockCount"><number>20000</number></property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QWidget" name="inputRow">
+                  <property name="transparent" stdset="0"><bool>true</bool></property>
+                  <layout class="QHBoxLayout" name="inputRowLayout">
+                   <property name="leftMargin"><number>0</number></property>
+                   <property name="topMargin"><number>0</number></property>
+                   <property name="rightMargin"><number>0</number></property>
+                   <property name="bottomMargin"><number>0</number></property>
+                   <item>
+                    <widget class="QLineEdit" name="stdinEdit">
+                     <property name="placeholderText"><string>pytr is asking for input — type here and press Enter</string></property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QCheckBox" name="hideInputCheck">
+                     <property name="toolTip"><string>Mask the input (use for PINs and codes)</string></property>
+                     <property name="text"><string>Hide</string></property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="sendButton">
+                     <property name="text"><string>Send</string></property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+
+      <!-- ============================ Settings ============================ -->
+      <widget class="QWidget" name="settingsPage">
+       <layout class="QVBoxLayout" name="settingsPageLayout">
+        <property name="spacing"><number>18</number></property>
+        <property name="leftMargin"><number>28</number></property>
+        <property name="topMargin"><number>24</number></property>
+        <property name="rightMargin"><number>28</number></property>
+        <property name="bottomMargin"><number>20</number></property>
+        <item>
+         <layout class="QVBoxLayout" name="settingsHeader">
+          <property name="spacing"><number>2</number></property>
+          <item>
+           <widget class="QLabel" name="settingsTitle">
+            <property name="text"><string>Settings</string></property>
+            <property name="role" stdset="0"><string>title</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="settingsSubtitle">
+            <property name="text"><string>Appearance, working folder and environment.</string></property>
+            <property name="wordWrap"><bool>true</bool></property>
+            <property name="role" stdset="0"><string>muted</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QScrollArea" name="settingsScroll">
+          <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+          <property name="horizontalScrollBarPolicy"><enum>Qt::ScrollBarAlwaysOff</enum></property>
+          <property name="widgetResizable"><bool>true</bool></property>
+          <widget class="QWidget" name="settingsContent">
+           <property name="maximumSize"><size><width>1100</width><height>16777215</height></size></property>
+           <property name="transparent" stdset="0"><bool>true</bool></property>
+           <layout class="QVBoxLayout" name="settingsContentLayout">
+            <property name="spacing"><number>16</number></property>
+            <property name="leftMargin"><number>0</number></property>
+            <property name="topMargin"><number>0</number></property>
+            <property name="rightMargin"><number>4</number></property>
+            <property name="bottomMargin"><number>0</number></property>
+
+            <!-- General -->
+            <item>
+             <widget class="QFrame" name="generalCard">
+              <property name="card" stdset="0"><bool>true</bool></property>
+              <layout class="QVBoxLayout" name="generalCardLayout">
+               <property name="spacing"><number>14</number></property>
+               <property name="leftMargin"><number>22</number></property>
+               <property name="topMargin"><number>20</number></property>
+               <property name="rightMargin"><number>22</number></property>
+               <property name="bottomMargin"><number>20</number></property>
+               <item>
+                <widget class="QLabel" name="generalTitle">
+                 <property name="text"><string>General</string></property>
+                 <property name="role" stdset="0"><string>section</string></property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QFormLayout" name="generalForm">
+                 <property name="fieldGrowthPolicy"><enum>QFormLayout::AllNonFixedFieldsGrow</enum></property>
+                 <property name="horizontalSpacing"><number>18</number></property>
+                 <property name="verticalSpacing"><number>14</number></property>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="themeLabel">
+                   <property name="text"><string>Theme</string></property>
+                   <property name="role" stdset="0"><string>field</string></property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QComboBox" name="themeCombo">
+                   <item><property name="text"><string>Follow system</string></property></item>
+                   <item><property name="text"><string>Dark</string></property></item>
+                   <item><property name="text"><string>Light</string></property></item>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="workdirLabel">
+                   <property name="text"><string>Working folder</string></property>
+                   <property name="role" stdset="0"><string>field</string></property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <layout class="QVBoxLayout" name="workdirColumn">
+                   <property name="spacing"><number>5</number></property>
+                   <item>
+                    <layout class="QHBoxLayout" name="workdirRow">
+                     <item>
+                      <widget class="QLineEdit" name="workdirEdit"/>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="browseWorkdirButton">
+                       <property name="text"><string>Browse…</string></property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="openWorkdirButton">
+                       <property name="text"><string>Open</string></property>
+                       <property name="variant" stdset="0"><string>ghost</string></property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="workdirHint">
+                     <property name="text"><string>Tasks run here. Relative paths (e.g. “documents”) are created in this folder.</string></property>
+                     <property name="wordWrap"><bool>true</bool></property>
+                     <property name="role" stdset="0"><string>small</string></property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="verbosityLabel">
+                   <property name="text"><string>Log detail</string></property>
+                   <property name="role" stdset="0"><string>field</string></property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QComboBox" name="verbosityCombo">
+                   <item><property name="text"><string>Normal</string></property></item>
+                   <item><property name="text"><string>Only warnings</string></property></item>
+                   <item><property name="text"><string>Debug (very detailed)</string></property></item>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="QCheckBox" name="checkSessionCheck">
+                   <property name="text"><string>Check the saved session when the app starts</string></property>
+                   <property name="checked"><bool>true</bool></property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+
+            <!-- About -->
+            <item>
+             <widget class="QFrame" name="aboutCard">
+              <property name="card" stdset="0"><bool>true</bool></property>
+              <layout class="QVBoxLayout" name="aboutCardLayout">
+               <property name="spacing"><number>12</number></property>
+               <property name="leftMargin"><number>22</number></property>
+               <property name="topMargin"><number>20</number></property>
+               <property name="rightMargin"><number>22</number></property>
+               <property name="bottomMargin"><number>20</number></property>
+               <item>
+                <widget class="QLabel" name="aboutTitle">
+                 <property name="text"><string>About</string></property>
+                 <property name="role" stdset="0"><string>section</string></property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QFormLayout" name="aboutForm">
+                 <property name="horizontalSpacing"><number>18</number></property>
+                 <property name="verticalSpacing"><number>8</number></property>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="aboutAppLabel">
+                   <property name="text"><string>App</string></property>
+                   <property name="role" stdset="0"><string>field</string></property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLabel" name="aboutAppValue">
+                   <property name="wordWrap"><bool>true</bool></property>
+                   <property name="textInteractionFlags"><set>Qt::TextSelectableByMouse</set></property>
+                   <property name="role" stdset="0"><string>muted</string></property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="aboutPytrLabel">
+                   <property name="text"><string>pytr</string></property>
+                   <property name="role" stdset="0"><string>field</string></property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLabel" name="aboutPytrValue">
+                   <property name="textInteractionFlags"><set>Qt::TextSelectableByMouse</set></property>
+                   <property name="role" stdset="0"><string>muted</string></property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="aboutQtLabel">
+                   <property name="text"><string>PySide6 / Qt</string></property>
+                   <property name="role" stdset="0"><string>field</string></property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLabel" name="aboutQtValue">
+                   <property name="textInteractionFlags"><set>Qt::TextSelectableByMouse</set></property>
+                   <property name="role" stdset="0"><string>muted</string></property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="aboutPythonLabel">
+                   <property name="text"><string>Python</string></property>
+                   <property name="role" stdset="0"><string>field</string></property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="QLabel" name="aboutPythonValue">
+                   <property name="textInteractionFlags"><set>Qt::TextSelectableByMouse</set></property>
+                   <property name="role" stdset="0"><string>muted</string></property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="aboutDataLabel">
+                   <property name="text"><string>pytr data folder</string></property>
+                   <property name="role" stdset="0"><string>field</string></property>
+                  </widget>
+                 </item>
+                 <item row="4" column="1">
+                  <widget class="QLabel" name="aboutDataValue">
+                   <property name="wordWrap"><bool>true</bool></property>
+                   <property name="textInteractionFlags"><set>Qt::TextSelectableByMouse</set></property>
+                   <property name="role" stdset="0"><string>muted</string></property>
+                  </widget>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="aboutRunnerLabel">
+                   <property name="text"><string>pytr runner</string></property>
+                   <property name="role" stdset="0"><string>field</string></property>
+                  </widget>
+                 </item>
+                 <item row="5" column="1">
+                  <widget class="QLabel" name="aboutRunnerValue">
+                   <property name="wordWrap"><bool>true</bool></property>
+                   <property name="textInteractionFlags"><set>Qt::TextSelectableByMouse</set></property>
+                   <property name="role" stdset="0"><string>muted</string></property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="aboutButtons">
+                 <item>
+                  <widget class="QPushButton" name="openDataButton">
+                   <property name="text"><string>Open pytr data folder</string></property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="aboutButtonsSpacer">
+                   <property name="orientation"><enum>Qt::Horizontal</enum></property>
+                   <property name="sizeHint" stdset="0"><size><width>0</width><height>0</height></size></property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <spacer name="settingsContentStretch">
+              <property name="orientation"><enum>Qt::Vertical</enum></property>
+              <property name="sizeHint" stdset="0"><size><width>0</width><height>0</height></size></property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="sizeGripEnabled"><bool>false</bool></property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
